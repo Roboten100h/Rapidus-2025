@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -30,11 +31,11 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void driveTank(double leftSpeed, double rightSpeed) {
-    backLeftMotor.set(VictorSPXControlMode.PercentOutput, leftSpeed);
-    backRightMotor.set(VictorSPXControlMode.PercentOutput, rightSpeed);
-    frontLeftMotor.set(VictorSPXControlMode.PercentOutput, leftSpeed);
-    frontRightMotor.set(VictorSPXControlMode.PercentOutput, rightSpeed);
-  }
+    backLeftMotor.set(ControlMode.PercentOutput, leftSpeed);
+    backRightMotor.set(ControlMode.PercentOutput, rightSpeed);
+    frontLeftMotor.set(ControlMode.PercentOutput, leftSpeed);
+    frontRightMotor.set(ControlMode.PercentOutput, rightSpeed);
+    }
 
   @Override
   public void periodic() {

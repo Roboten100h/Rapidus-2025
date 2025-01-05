@@ -31,8 +31,8 @@ public class DrivetrainDriveCommand extends Command {
     double leftStickY = -driverController.getLeftY();
     double rightStickY = -driverController.getRightY();
 
-    leftStickY = Range.threshold(leftStickY, 0.1);
-    rightStickY = Range.threshold(rightStickY, 0.1);
+    leftStickY = Range.threshold(0.1, leftStickY);
+    rightStickY = Range.threshold(0.1, rightStickY);
     leftStickY = Math.pow(leftStickY, 3);
     rightStickY = Math.pow(rightStickY, 3);
 

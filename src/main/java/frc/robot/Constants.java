@@ -19,9 +19,9 @@ public final class Constants {
   }
 
   public static class CanIDs {
-    public static final int backLeftMotor = 5;
+    public static final int backLeftMotor = 8;
     public static final int backRightMotor = 6;
-    public static final int frontLeftMotor = 2;
+    public static final int frontLeftMotor = 5;
     public static final int frontRightMotor = 7;
   }
 

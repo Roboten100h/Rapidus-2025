@@ -60,8 +60,8 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     // operatorController.a().onTrue(new ExampleInstantCommand(exampleSubsystem));
-    operatorController.b().onTrue(new ToggleServo1Command(pince));
-    operatorController.x().onTrue(new ToggleServo2Command(pince));
+    // operatorController.b().onTrue(new ToggleServo1Command(pince));
+    // operatorController.x().onTrue(new ToggleServo2Command(pince));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }
