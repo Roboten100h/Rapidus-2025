@@ -11,7 +11,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.ToggleServo1Command;
+import frc.robot.commands.ToggleServo2Command;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Pince;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,11 +26,16 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
 
+  private final Pince pince = new Pince();
+
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController driverController =
       new CommandXboxController(OperatorConstants.driverControllerPort);
+  
+  private final CommandXboxController operatorController =
+      new CommandXboxController(OperatorConstants.operatorControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -51,8 +59,9 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    //driverController.a().onTrue(new ExampleInstantCommand(exampleSubsystem));
-
+    // operatorController.a().onTrue(new ExampleInstantCommand(exampleSubsystem));
+    operatorController.b().onTrue(new ToggleServo1Command(pince));
+    operatorController.x().onTrue(new ToggleServo2Command(pince));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }

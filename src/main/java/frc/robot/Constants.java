@@ -15,6 +15,7 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int driverControllerPort = 0;
+    public static final int operatorControllerPort = 1;
   }
 
   public static class CanIDs {
@@ -25,7 +26,8 @@ public final class Constants {
   }
 
   public static class PWMChannels {
-    
+    public static final int servo1 = 0;
+    public static final int servo2 = 1;
   }
 
   public static class DigitalIOs {}
