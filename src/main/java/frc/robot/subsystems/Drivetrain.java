@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
@@ -15,10 +16,10 @@ public class Drivetrain extends SubsystemBase {
   private Talon frontRightMotor;
 
   public Drivetrain() {
-    backLeftMotor = new Talon(0);
-    backRightMotor = new Talon(1);
-    frontLeftMotor = new Talon(2);
-    frontRightMotor = new Talon(3);
+    backLeftMotor = new Talon(Constants.PWMChannels.backLeftMotor);
+    backRightMotor = new Talon(Constants.PWMChannels.backRightMotor);
+    frontLeftMotor = new Talon(Constants.PWMChannels.frontLeftMotor);
+    frontRightMotor = new Talon(Constants.PWMChannels.frontRightMotor);
 
     backLeftMotor.setInverted(false);
     backRightMotor.setInverted(true);

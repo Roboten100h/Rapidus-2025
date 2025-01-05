@@ -19,6 +19,13 @@ public final class Constants {
 
   public static class CanIDs {}
 
+  public static class PWMChannels {
+    public static final int backLeftMotor = 0;
+    public static final int backRightMotor = 1;
+    public static final int frontLeftMotor = 2;
+    public static final int frontRightMotor = 3;
+  }
+
   public static class DigitalIOs {}
 
   public static class PCMPorts {}
