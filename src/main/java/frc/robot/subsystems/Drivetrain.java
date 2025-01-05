@@ -4,22 +4,26 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
+import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
-  private Talon backLeftMotor;
-  private Talon backRightMotor;
-  private Talon frontLeftMotor;
-  private Talon frontRightMotor;
+  private VictorSPX backLeftMotor;
+  private VictorSPX backRightMotor;
+  private VictorSPX frontLeftMotor;
+  private VictorSPX frontRightMotor;
 
   public Drivetrain() {
-    backLeftMotor = new Talon(Constants.PWMChannels.backLeftMotor);
-    backRightMotor = new Talon(Constants.PWMChannels.backRightMotor);
-    frontLeftMotor = new Talon(Constants.PWMChannels.frontLeftMotor);
-    frontRightMotor = new Talon(Constants.PWMChannels.frontRightMotor);
+    backLeftMotor = new VictorSPX(Constants.CanIDs.backLeftMotor);
+    backRightMotor = new VictorSPX(Constants.CanIDs.backRightMotor);
+    frontLeftMotor = new VictorSPX(Constants.CanIDs.frontLeftMotor);
+    frontRightMotor = new VictorSPX(Constants.CanIDs.frontRightMotor);
 
     backLeftMotor.setInverted(false);
     backRightMotor.setInverted(true);
@@ -28,10 +32,10 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void driveTank(double leftSpeed, double rightSpeed) {
-    backLeftMotor.set(leftSpeed);
-    backRightMotor.set(rightSpeed);
-    frontLeftMotor.set(leftSpeed);
-    frontRightMotor.set(rightSpeed);
+    backLeftMotor.set(VictorSPXControlMode.PercentOutput, leftSpeed);
+    backRightMotor.set(VictorSPXControlMode.PercentOutput, rightSpeed);
+    frontLeftMotor.set(VictorSPXControlMode.PercentOutput, leftSpeed);
+    frontRightMotor.set(VictorSPXControlMode.PercentOutput, rightSpeed);
   }
 
   @Override

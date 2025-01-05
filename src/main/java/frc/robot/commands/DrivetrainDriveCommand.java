@@ -28,8 +28,8 @@ public class DrivetrainDriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftStickY = driverController.getLeftY();
-    double rightStickY = driverController.getRightY();
+    double leftStickY = -driverController.getLeftY();
+    double rightStickY = -driverController.getRightY();
 
     leftStickY = Range.threshold(leftStickY, 0.1);
     rightStickY = Range.threshold(rightStickY, 0.1);
