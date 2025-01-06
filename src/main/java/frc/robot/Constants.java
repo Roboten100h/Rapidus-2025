@@ -28,6 +28,9 @@ public final class Constants {
     public static final int outakeMotor = 10;
 
     public static final int elevatorMotor = 11;
+
+    public static final int moteurRouleau = 12;
+    public static final int moteurAngle = 13;
   }
 
   public static class PWMChannels {
@@ -36,8 +39,9 @@ public final class Constants {
   }
 
   public static class DigitalIOs {
-    public static final int limitSwitch = 0;
+    public static final int limitSwitchEchelle = 0;
     public static final int procSensor = 1;
+    public static final int limitSwitchGobeur = 2;
   }
 
   public static class PCMPorts {}

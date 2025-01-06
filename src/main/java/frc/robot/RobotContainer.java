@@ -13,12 +13,14 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
 import frc.robot.commands.MoveEchelleCommand;
 import frc.robot.commands.OutakeCommand;
+import frc.robot.commands.SetRouleauSpeedCommand;
 import frc.robot.commands.ToggleEntonnoirCommand;
 import frc.robot.commands.ToggleServo1Command;
 import frc.robot.commands.ToggleServo2Command;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Echelle;
 import frc.robot.subsystems.Entonnoir;
+import frc.robot.subsystems.Gobeur;
 import frc.robot.subsystems.Pince;
 
 /**
@@ -36,6 +38,8 @@ public class RobotContainer {
   private final Echelle echelle = new Echelle();
 
   private final Entonnoir entonnoir = new Entonnoir();
+
+  private final Gobeur gobeur = new Gobeur();
 
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
@@ -72,6 +76,9 @@ public class RobotContainer {
     operatorController.x().onTrue(new ToggleServo2Command(pince));
     operatorController.y().whileTrue(new OutakeCommand(entonnoir));
     operatorController.a().onTrue(new ToggleEntonnoirCommand(entonnoir));
+
+    operatorController.rightBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, 1));
+    operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));
   }
 
   /**

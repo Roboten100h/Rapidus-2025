@@ -13,6 +13,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -31,7 +32,7 @@ public class Echelle extends SubsystemBase {
 
     moteurEchelle.configure(sparkBaseConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 
-    limitSwitch = new DigitalInput(Constants.DigitalIOs.limitSwitch);
+    limitSwitch = new DigitalInput(Constants.DigitalIOs.limitSwitchEchelle);
 
     relativeEncoder = moteurEchelle.getEncoder();
   }
@@ -60,6 +61,7 @@ public class Echelle extends SubsystemBase {
     if (getLimitSwitch()) {
       resetEchellePosition();
     }
+    SmartDashboard.putNumber("Echelle Position", getEchellePosition());
     // This method will be called once per scheduler run
   }
 }
