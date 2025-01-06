@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.EntonnoirLogicCommand;
+import frc.robot.commands.GobeurDeployCommand;
 import frc.robot.commands.MoveEchelleCommand;
 import frc.robot.commands.OutakeCommand;
 import frc.robot.commands.SetRouleauSpeedCommand;
@@ -55,6 +57,8 @@ public class RobotContainer {
     // Configure the trigger bindings
     drivetrain.setDefaultCommand(new DrivetrainDriveCommand(drivetrain, driverController));
     echelle.setDefaultCommand(new MoveEchelleCommand(echelle, operatorController));
+    gobeur.setDefaultCommand(new GobeurDeployCommand(gobeur, operatorController));
+    entonnoir.setDefaultCommand(new EntonnoirLogicCommand(entonnoir));
 
     autoChooser.addOption("Do nothing", null);
 
