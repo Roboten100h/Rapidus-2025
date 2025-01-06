@@ -11,9 +11,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.MoveEchelleCommand;
+import frc.robot.commands.OutakeCommand;
+import frc.robot.commands.ToggleEntonnoirCommand;
 import frc.robot.commands.ToggleServo1Command;
 import frc.robot.commands.ToggleServo2Command;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Echelle;
+import frc.robot.subsystems.Entonnoir;
 import frc.robot.subsystems.Pince;
 
 /**
@@ -28,6 +33,10 @@ public class RobotContainer {
 
   private final Pince pince = new Pince();
 
+  private final Echelle echelle = new Echelle();
+
+  private final Entonnoir entonnoir = new Entonnoir();
+
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -41,6 +50,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     drivetrain.setDefaultCommand(new DrivetrainDriveCommand(drivetrain, driverController));
+    echelle.setDefaultCommand(new MoveEchelleCommand(echelle, operatorController));
 
     autoChooser.addOption("Do nothing", null);
 
@@ -58,12 +68,10 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    // operatorController.a().onTrue(new ExampleInstantCommand(exampleSubsystem));
-    // operatorController.b().onTrue(new ToggleServo1Command(pince));
-    // operatorController.x().onTrue(new ToggleServo2Command(pince));
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
+    operatorController.b().onTrue(new ToggleServo1Command(pince));
+    operatorController.x().onTrue(new ToggleServo2Command(pince));
+    operatorController.y().whileTrue(new OutakeCommand(entonnoir));
+    operatorController.a().onTrue(new ToggleEntonnoirCommand(entonnoir));
   }
 
   /**

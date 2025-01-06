@@ -23,6 +23,11 @@ public final class Constants {
     public static final int backRightMotor = 6;
     public static final int frontLeftMotor = 5;
     public static final int frontRightMotor = 7;
+
+    public static final int intakeMotor = 9;
+    public static final int outakeMotor = 10;
+
+    public static final int elevatorMotor = 11;
   }
 
   public static class PWMChannels {
@@ -30,7 +35,10 @@ public final class Constants {
     public static final int servo2 = 1;
   }
 
-  public static class DigitalIOs {}
+  public static class DigitalIOs {
+    public static final int limitSwitch = 0;
+    public static final int procSensor = 1;
+  }
 
   public static class PCMPorts {}
 }
