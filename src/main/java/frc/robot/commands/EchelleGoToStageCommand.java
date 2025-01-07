@@ -24,7 +24,7 @@ public class EchelleGoToStageCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pidController = new PIDController(0.1, 0.1, 0.1);
+    pidController = new PIDController(0.03, 0.001, 0.001);
     pidController.reset();
   }
 

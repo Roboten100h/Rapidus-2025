@@ -7,11 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.EchelleGoToStageCommand;
 import frc.robot.commands.EchelleUpdateStageCommand;
 import frc.robot.commands.EntonnoirLogicCommand;
 import frc.robot.commands.GobeurDeployCommand;
@@ -61,7 +61,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     drivetrain.setDefaultCommand(new DrivetrainDriveCommand(drivetrain, driverController));
-    echelle.setDefaultCommand(new MoveEchelleCommand(echelle, operatorController));
+    // echelle.setDefaultCommand(new MoveEchelleCommand(echelle, operatorController));
+    echelle.setDefaultCommand(new EchelleGoToStageCommand(echelle));
     gobeur.setDefaultCommand(new GobeurDeployCommand(gobeur, operatorController));
     entonnoir.setDefaultCommand(new EntonnoirLogicCommand(entonnoir));
 
@@ -84,6 +85,7 @@ public class RobotContainer {
     operatorController.b().onTrue(new ToggleServo1Command(pince));
     operatorController.y().whileTrue(new OutakeCommand(entonnoir));
     operatorController.a().onTrue(new ToggleEntonnoirCommand(entonnoir));
+    operatorController.x().whileTrue(new MoveEchelleCommand(echelle, operatorController));
 
     operatorController.rightBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, 1));
     operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));

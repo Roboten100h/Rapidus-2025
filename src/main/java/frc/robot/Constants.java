@@ -36,8 +36,7 @@ public final class Constants {
   }
 
   public static class PWMChannels {
-    public static final int servo1 = 0;
-    public static final int servo2 = 1;
+    public static final int servo1 = 1;
   }
 
   public static class DigitalIOs {
@@ -52,7 +51,7 @@ public final class Constants {
   }
 
   public static class EncoderConstants {
-    public static int echelleStage[] = {0, 1, 2, 3};
+    public static int echelleStage[] = {-10, 50, 115, 215};
     
 
     public static int gobeurStage[] = {0, 1, 2, 3};

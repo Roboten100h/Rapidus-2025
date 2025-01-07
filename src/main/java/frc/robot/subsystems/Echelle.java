@@ -30,17 +30,20 @@ public class Echelle extends SubsystemBase {
     SparkMaxConfig sparkBaseConfig = new SparkMaxConfig();
     sparkBaseConfig.idleMode(IdleMode.kBrake);
     sparkBaseConfig.inverted(false);
+    sparkBaseConfig.closedLoopRampRate(0.5);
+    sparkBaseConfig.openLoopRampRate(0.5);
 
     moteurEchelle.configure(sparkBaseConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 
     limitSwitch = new DigitalInput(Constants.DigitalIOs.limitSwitchEchelle);
 
     relativeEncoder = moteurEchelle.getEncoder();
+
   }
 
   public void setEchelle(double vitesse) {
     if (getLimitSwitch()) {
-      vitesse = Math.min(vitesse, 0);
+      vitesse = Math.max(vitesse, 0);
     }
     moteurEchelle.set(vitesse);
   }
