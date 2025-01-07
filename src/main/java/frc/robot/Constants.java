@@ -31,6 +31,8 @@ public final class Constants {
 
     public static final int moteurRouleau = 4;
     public static final int moteurAngle = 3;
+
+    public static final int PCM = 21;
   }
 
   public static class PWMChannels {
@@ -44,5 +46,8 @@ public final class Constants {
     public static final int limitSwitchGobeur = 2;
   }
 
-  public static class PCMPorts {}
+  public static class PCMPorts {
+    public static final int solenoid1 = 0;
+    public static final int solenoid2 = 1;
+  }
 }

@@ -19,6 +19,8 @@ import frc.robot.commands.SetRouleauSpeedCommand;
 import frc.robot.commands.ToggleEntonnoirCommand;
 import frc.robot.commands.ToggleServo1Command;
 import frc.robot.commands.ToggleServo2Command;
+import frc.robot.commands.ToggleSolenoidCommand;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Echelle;
 import frc.robot.subsystems.Entonnoir;
@@ -42,6 +44,8 @@ public class RobotContainer {
   private final Entonnoir entonnoir = new Entonnoir();
 
   private final Gobeur gobeur = new Gobeur();
+
+  private final Climber climber = new Climber();
 
   private SendableChooser<Command> autoChooser = new SendableChooser<>();
 
@@ -83,6 +87,8 @@ public class RobotContainer {
 
     operatorController.rightBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, 1));
     operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));
+
+    driverController.a().onTrue(new ToggleSolenoidCommand(climber));
   }
 
   /**
