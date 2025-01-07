@@ -51,7 +51,7 @@ public class Entonnoir extends SubsystemBase {
   }
 
   public boolean getProcSensor() {
-    return procSensor.get();
+    return !procSensor.get();
   }
 
   public void setSortieState(boolean state) {

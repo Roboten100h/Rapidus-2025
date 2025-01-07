@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,7 +27,12 @@ public class Drivetrain extends SubsystemBase {
     backLeftMotor.setInverted(false);
     backRightMotor.setInverted(true);
     frontLeftMotor.setInverted(false);
-    frontRightMotor.setInverted(true);
+    frontRightMotor.setInverted(false);
+
+    frontLeftMotor.setNeutralMode(NeutralMode.Brake);
+    frontRightMotor.setNeutralMode(NeutralMode.Brake);
+    backLeftMotor.setNeutralMode(NeutralMode.Brake);
+    backRightMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public void driveTank(double leftSpeed, double rightSpeed) {

@@ -29,8 +29,8 @@ public final class Constants {
 
     public static final int elevatorMotor = 11;
 
-    public static final int moteurRouleau = 12;
-    public static final int moteurAngle = 13;
+    public static final int moteurRouleau = 4;
+    public static final int moteurAngle = 3;
   }
 
   public static class PWMChannels {
@@ -39,8 +39,8 @@ public final class Constants {
   }
 
   public static class DigitalIOs {
-    public static final int limitSwitchEchelle = 0;
-    public static final int procSensor = 1;
+    public static final int limitSwitchEchelle = 1;
+    public static final int procSensor = 0;
     public static final int limitSwitchGobeur = 2;
   }
 

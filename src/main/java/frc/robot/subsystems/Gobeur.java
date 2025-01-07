@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -18,13 +16,13 @@ import frc.robot.Constants;
 public class Gobeur extends SubsystemBase {
   /** Creates a new Gobeur. */
   private SparkMax moteurAngle;
-  private TalonSRX moteurRouleau;
+  private SparkMax moteurRouleau;
   private DigitalInput limitSwitch;
   private RelativeEncoder relativeEncoder;
 
   public Gobeur() {
     moteurAngle = new SparkMax(Constants.CanIDs.moteurAngle, MotorType.kBrushless);
-    moteurRouleau = new TalonSRX(Constants.CanIDs.moteurRouleau);
+    moteurRouleau = new SparkMax(Constants.CanIDs.moteurRouleau, MotorType.kBrushed);
 
     limitSwitch = new DigitalInput(Constants.DigitalIOs.limitSwitchGobeur);
 
@@ -32,7 +30,7 @@ public class Gobeur extends SubsystemBase {
   }
 
   public void setRouleauVitesse(double vitesse) {
-    moteurRouleau.set(ControlMode.PercentOutput, vitesse);
+    moteurRouleau.set(vitesse);
   }
 
   public void setAngleVitesse(double vitesse) {
