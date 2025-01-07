@@ -87,8 +87,8 @@ public class RobotContainer {
     operatorController.a().onTrue(new ToggleEntonnoirCommand(entonnoir));
     operatorController.x().whileTrue(new MoveEchelleCommand(echelle, operatorController));
 
-    operatorController.rightBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, 1));
-    operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));
+    //operatorController.rightBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, 1));
+    //operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));
 
     driverController.a().onTrue(new ToggleSolenoidCommand(climber));
 

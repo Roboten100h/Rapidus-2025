@@ -32,6 +32,13 @@ public class GobeurDeployCommand extends Command {
     leftStickY = Range.threshold(0.001, leftStickY);
     leftStickY = Math.pow(leftStickY, 3);
     gobeur.setAngleVitesse(0.28*leftStickY);
+    if (operatorController.leftBumper().getAsBoolean()) {
+      gobeur.setRouleauVitesse(-1);
+    } else if (operatorController.rightBumper().getAsBoolean()) {
+      gobeur.setRouleauVitesse(1);
+    } else {
+      gobeur.setRouleauVitesse(0);
+    }
   }
 
   // Called once the command ends or is interrupted.

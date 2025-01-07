@@ -36,7 +36,7 @@ public class DrivetrainDriveCommand extends Command {
     leftStickY = Math.pow(leftStickY, 5);
     rightStickY = Math.pow(rightStickY, 5);
 
-    drivetrain.driveTank(0.5*leftStickY, 0.6*rightStickY);
+    drivetrain.driveTank(0.75*leftStickY, 0.75*rightStickY);
   }
 
   // Called once the command ends or is interrupted.

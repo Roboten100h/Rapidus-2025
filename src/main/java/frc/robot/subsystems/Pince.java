@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -20,16 +21,21 @@ public class Pince extends SubsystemBase {
 
   public void toggleServo() {
     if (isServo1Open) {
-      servo1.setAngle(30);
+      servo1.setAngle(90);
       isServo1Open = false;
     } else {
-      servo1.setAngle(30);
+      servo1.setAngle(178);
       isServo1Open = true;
     }
   }
 
+  public double getServoPosition(){
+    return servo1.getAngle();
+  }
+
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Servo", getServoPosition());
     // This method will be called once per scheduler run
   }
 }
