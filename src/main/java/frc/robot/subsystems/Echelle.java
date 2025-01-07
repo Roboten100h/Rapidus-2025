@@ -45,7 +45,7 @@ public class Echelle extends SubsystemBase {
   }
 
   public boolean getLimitSwitch() {
-    return limitSwitch.get();
+    return !limitSwitch.get();
   }
 
   public double getEchellePosition() {

@@ -29,9 +29,9 @@ public class GobeurDeployCommand extends Command {
   @Override
   public void execute() {
     double leftStickY = operatorController.getLeftY();
-    leftStickY = Range.threshold(0.1, leftStickY);
+    leftStickY = Range.threshold(0.001, leftStickY);
     leftStickY = Math.pow(leftStickY, 3);
-    gobeur.setAngleVitesse(leftStickY);
+    gobeur.setAngleVitesse(0.28*leftStickY);
   }
 
   // Called once the command ends or is interrupted.

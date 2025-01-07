@@ -28,10 +28,10 @@ public class MoveEchelleCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double stickY = -operatorController.getRightY();
-    stickY = Range.threshold(0.1, stickY);
-    stickY = Math.pow(stickY, 3);
-    echelle.setEchelle(stickY);
+    double stickY = operatorController.getRightY();
+    stickY = Range.threshold(0.05, stickY);
+    stickY = Math.pow(stickY, 5);
+    echelle.setEchelle(0.8*stickY);
   }
 
   // Called once the command ends or is interrupted.

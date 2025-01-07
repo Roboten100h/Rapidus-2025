@@ -31,12 +31,12 @@ public class DrivetrainDriveCommand extends Command {
     double leftStickY = -driverController.getLeftY();
     double rightStickY = -driverController.getRightY();
 
-    leftStickY = Range.threshold(0.1, leftStickY);
-    rightStickY = Range.threshold(0.1, rightStickY);
-    leftStickY = Math.pow(leftStickY, 3);
-    rightStickY = Math.pow(rightStickY, 3);
+    leftStickY = Range.threshold(0.01, leftStickY);
+    rightStickY = Range.threshold(0.01, rightStickY);
+    leftStickY = Math.pow(leftStickY, 5);
+    rightStickY = Math.pow(rightStickY, 5);
 
-    drivetrain.driveTank(leftStickY, rightStickY);
+    drivetrain.driveTank(0.5*leftStickY, 0.6*rightStickY);
   }
 
   // Called once the command ends or is interrupted.
