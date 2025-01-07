@@ -22,6 +22,7 @@ public class Echelle extends SubsystemBase {
   private SparkMax moteurEchelle;
   private DigitalInput limitSwitch;
   private RelativeEncoder relativeEncoder;
+  private int stage;
 
   public Echelle() {
     moteurEchelle = new SparkMax(Constants.CanIDs.elevatorMotor, MotorType.kBrushless);
@@ -44,6 +45,14 @@ public class Echelle extends SubsystemBase {
     moteurEchelle.set(vitesse);
   }
 
+  public int wantedStage() {
+    return stage;
+  }
+
+  public void setStage(int stage) {
+    this.stage = stage;
+  }
+
   public boolean getLimitSwitch() {
     return !limitSwitch.get();
   }
@@ -62,6 +71,8 @@ public class Echelle extends SubsystemBase {
       resetEchellePosition();
     }
     SmartDashboard.putNumber("Echelle Position", getEchellePosition());
+    SmartDashboard.putBoolean("Limit Switch", getLimitSwitch());
+    SmartDashboard.putNumber("Wanted Stage", wantedStage());
     // This method will be called once per scheduler run
   }
 }

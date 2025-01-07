@@ -7,10 +7,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.EchelleUpdateStageCommand;
 import frc.robot.commands.EntonnoirLogicCommand;
 import frc.robot.commands.GobeurDeployCommand;
 import frc.robot.commands.MoveEchelleCommand;
@@ -47,7 +49,7 @@ public class RobotContainer {
 
   private final Climber climber = new Climber();
 
-  private SendableChooser<Command> autoChooser = new SendableChooser<>();
+  private SendableChooser<Command> autoChooser = new SendableChooser<>(); // autonome
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController driverController =
@@ -89,6 +91,9 @@ public class RobotContainer {
     operatorController.leftBumper().whileTrue(new SetRouleauSpeedCommand(gobeur, -1));
 
     driverController.a().onTrue(new ToggleSolenoidCommand(climber));
+
+    operatorController.povUp().onTrue(new EchelleUpdateStageCommand(echelle, true));
+    operatorController.povDown().onTrue(new EchelleUpdateStageCommand(echelle, false));
   }
 
   /**

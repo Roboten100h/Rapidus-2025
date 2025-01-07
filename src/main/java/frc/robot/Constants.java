@@ -50,4 +50,12 @@ public final class Constants {
     public static final int solenoid1 = 0;
     public static final int solenoid2 = 1;
   }
+
+  public static class EncoderConstants {
+    public static int echelleStage[] = {0, 1, 2, 3};
+    
+
+    public static int gobeurStage[] = {0, 1, 2, 3};
+
+  }
 }
