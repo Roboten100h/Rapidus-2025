@@ -20,7 +20,6 @@ import frc.robot.commands.OutakeCommand;
 import frc.robot.commands.SetRouleauSpeedCommand;
 import frc.robot.commands.ToggleEntonnoirCommand;
 import frc.robot.commands.ToggleServo1Command;
-import frc.robot.commands.ToggleServo2Command;
 import frc.robot.commands.ToggleSolenoidCommand;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
@@ -83,7 +82,6 @@ public class RobotContainer {
    */
   private void configureBindings() {
     operatorController.b().onTrue(new ToggleServo1Command(pince));
-    operatorController.x().onTrue(new ToggleServo2Command(pince));
     operatorController.y().whileTrue(new OutakeCommand(entonnoir));
     operatorController.a().onTrue(new ToggleEntonnoirCommand(entonnoir));
 

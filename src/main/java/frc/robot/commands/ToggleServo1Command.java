@@ -21,6 +21,6 @@ public class ToggleServo1Command extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pince.toggleServo(1);
+    pince.toggleServo();
   }
 }
