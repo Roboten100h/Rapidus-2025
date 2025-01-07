@@ -28,7 +28,7 @@ public class GobeurDeployCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftStickY = operatorController.getLeftY();
+    double leftStickY = operatorController.getRightY();
     leftStickY = Range.threshold(0.001, leftStickY);
     leftStickY = Math.pow(leftStickY, 3);
     gobeur.setAngleVitesse(0.28*leftStickY);

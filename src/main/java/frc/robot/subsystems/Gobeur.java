@@ -34,6 +34,9 @@ public class Gobeur extends SubsystemBase {
   }
 
   public void setAngleVitesse(double vitesse) {
+    if (getLimitSwitch()) {
+      vitesse = Math.max(vitesse, 0);
+    }
     moteurAngle.set(vitesse);
   }
 
@@ -55,6 +58,7 @@ public class Gobeur extends SubsystemBase {
       resetAnglePosition();
     }
     SmartDashboard.putNumber("Angle Position", getAnglePosition());
+    SmartDashboard.putBoolean("Switch Gobeur", getLimitSwitch());
     // This method will be called once per scheduler run
   }
 }
